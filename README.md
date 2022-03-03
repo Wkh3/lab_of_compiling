@@ -1,8 +1,6 @@
 
 # the lab of compilers principles
 
-## lab-lexer
+## lexer
 
-Complete a simple lexical analyzer
-
-[lexer](docs/lexer.md)
+* [Complete a simple lexical analyzer](docs/lexer.md)
