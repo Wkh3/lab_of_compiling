@@ -8,6 +8,8 @@ set(CMAKE_CXX_FLAGS " ${CMAKE_CXX_FLAGS} -std=c++17")
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-set(src_list main.cpp)
+set(src_list 
+    main.cpp
+    Lexer.cpp)
 
 add_executable(lexer ${src_list})
