@@ -5,4 +5,4 @@
 
 Complete a simple lexical analyzer
 
-[lexer](docs/lexer)
+[lexer](docs/lexer.md)
