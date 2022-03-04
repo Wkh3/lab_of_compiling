@@ -1,4 +1,4 @@
 
-[image](lexer.uml.png)
+![image](lexer.uml.png)
 
-[image](lexer_sequnce.png)
+![image](lexer_sequnce.png)
