@@ -101,9 +101,9 @@ void Lexer::RegisterHandlers() {
 
     Register(StateType::Id, [this](char c) {
         auto type = CharParser()(c);
-        if (type == CharParser::Blanck || c == ';') {
+        if (type != CharParser::Alpha && type != CharParser::Digit) {
             FinishParserToken();
-            return StateType::Initial;
+            return InitialHandle(c);
         }
 
         token_ >> c;
@@ -113,7 +113,7 @@ void Lexer::RegisterHandlers() {
     Register(StateType::Assignment, [this](char c) {
         if (c != '=') {
             FinishParserToken();
-            return StateType::Initial;
+            return InitialHandle(c);
         } else {
             token_ >> c;
             return StateType::Equal;
