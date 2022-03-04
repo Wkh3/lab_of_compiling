@@ -43,26 +43,8 @@ void Lexer::FinishParserToken() {
     }
 }
 
-Lexer::StateType Lexer::InitialHandle(char c) {
-    auto type = CharParser()(c);
-
-    if (type == CharParser::Blanck) {
-        FinishParserToken();
-        return StateType::Initial;
-    }
-
-    if (type == CharParser::Alpha) {
-        token_.setType(Type::Identifier);
-        token_ >> c;
-        return c == 'i' ? StateType::Int1 : StateType::Id;
-    } else if (type == CharParser::Digit) {
-        token_.setType(Type::IntLiteral);
-        token_ >> c;
-        return StateType::IntLiteral;
-    } else if (type == CharParser::Operator) {
-        token_ >> c;
-        token_.setType(Type::Operator);
-        switch (c) {
+Lexer::StateType Lexer::OperatorToState(char c){
+    switch (c) {
             case '+':
                 return StateType::Plus;
             case '-':
@@ -85,7 +67,28 @@ Lexer::StateType Lexer::InitialHandle(char c) {
                 return StateType::LessThan;
             default:
                 return StateType::Initial;
-        }
+    }
+}
+Lexer::StateType Lexer::InitialHandle(char c) {
+    auto type = CharParser()(c);
+
+    if (type == CharParser::Blanck) {
+        FinishParserToken();
+        return StateType::Initial;
+    }
+
+    if (type == CharParser::Alpha) {
+        token_.setType(Type::Identifier);
+        token_ >> c;
+        return c == 'i' ? StateType::Int1 : StateType::Id;
+    } else if (type == CharParser::Digit) {
+        token_.setType(Type::IntLiteral);
+        token_ >> c;
+        return StateType::IntLiteral;
+    } else if (type == CharParser::Operator) {
+        token_ >> c;
+        token_.setType(Type::Operator);
+        return OperatorToState(c);
     }
 
     return StateType::Initial;

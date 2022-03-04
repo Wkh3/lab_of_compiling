@@ -65,6 +65,7 @@ public:
 private:
     void RegisterHandlers();
     void FinishParserToken();
+    StateType OperatorToState(char c);
     //handlers
     StateType InitialHandle(char c);
 private:
