@@ -51,6 +51,11 @@ public:
         type_ = type;
     }
 
+    Token& operator>>(char ch){
+          value_.push_back(ch);
+          return *this;
+    }
+
     const std::string &getValue() const {
         return value_;
     }
