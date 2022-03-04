@@ -6,12 +6,40 @@
 #include <list>
 namespace lab {
 
-enum Type {
+#define TypeMap(XX)                                                                                \
+        XX(Identifier, Identifier)                                                                 \
+        XX(Operator, Operator)                                                                     \
+        XX(IntLiteral, IntLiteral)                                                                 \
+        XX(Int,Int)
 
+
+enum Type {
+    #define XX(name,str) name,
+    TypeMap(XX)
+    #undef XX 
 };
 
-enum State {
-
+enum class State {
+    Initial,
+    Id,
+    Int,
+    Int1,
+    Int2,
+    Int3,
+    IntLiteral,
+    Plus,           //  +
+    Sub,            //  -
+    Mul,            //  *
+    Divide,         //  /
+    LeftParen,      //  (
+    RightParen,     //  )
+    Assignment,     //  =
+    SemiColon,      //  ;
+    GreaterThan,    //  >
+    GreaterEqual,   //  >=
+    LessThan,       //  <   
+    LessEqual,      //  <=
+    Equal           //  ==
 };
 
 
@@ -37,7 +65,8 @@ public:
 private:
     void RegisterHandlers();
     void FinishParserToken();
-
+    //handlers
+    StateType InitialHandle(char c);
 private:
     Token token_;
     TokenList tokens_;
