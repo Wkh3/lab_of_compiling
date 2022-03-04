@@ -49,7 +49,7 @@ protected:
 ```
 
 
-the next is to design token.In order to improve expansibility we also design it to a class template so that it can save different type by tepename.
+the next is to design token.In order to improve expansibility we also design it to a class template so that it can save different type by template typename.
 
 ```cpp
 template <typename T, typename = std::enable_if_t<std::is_enum_v<T>>>
@@ -241,7 +241,7 @@ private:
 
 ![image](lexer.uml.png)
 
-When we're done with all the designs,we can build and run it.
+After we're done with all the designs,we can build and run it.
 ```bash
 mkdir build
 cd build
