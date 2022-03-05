@@ -140,7 +140,7 @@ enum class State {
     Equal           //  ==
 };
 ```
-Since we wiil outout the token information,so we definition a marco map which can reduce the code of type casting to string.
+Since we wiil output the token information,so we define a marco map which can reduce the code of type casting to string.
 ```cpp
 #define TypeMap(XX)                                                                                \
         XX(Identifier, Identifier)                                                                 \
@@ -168,7 +168,7 @@ public:
 };
 ```
 
-Lexer only need to extend StausMachine and implement the state of handling.detailed parsing operations refer to `lexer.cpp`
+Lexer only need to extend StausMachine and implement the state of handling.Detailed parsing operations refer to `lexer.cpp`
 ```cpp
 class Lexer : public StatusMachine<State, char, std::function<State(char)>> {
 public:
